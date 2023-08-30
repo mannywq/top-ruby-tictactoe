@@ -57,19 +57,19 @@ class TicTacToe
     end
   end
 
-  def check_winner?
-    puts 'Checking for a winner'
+  def check_winner?(player)
+    # puts 'Checking for a winner'
     WINNING_COMBO.each do |row|
       next unless @@grid.values_at(*row).none? { |el| el == ' ' }
 
       el = row.map { |index| @@grid[index] }
 
-      if el.all? { |el| el == 'x' } || el.all? { |el| el == 'o' }
-        puts "#{el[0]} wins!"
+      if el.all? { |el| el == player.marker }
+        # puts "#{player.name} wins!"
         return true
       end
     end
-    puts 'No winner found'
+    # puts 'No winner found'
     false
   end
 

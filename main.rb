@@ -1,5 +1,8 @@
-require_relative 'game'
-require_relative 'player'
+require_relative 'lib/game'
+require_relative 'lib/player'
+require_relative 'lib/instructions'
+
+TextInstructions.welcome
 
 p1 = Player.new '', 'human'
 p2 = Player.new('', 'human')

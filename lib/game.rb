@@ -28,7 +28,7 @@ class Game
         make_move
       end
 
-      break if @board.check_winner?
+      break if @board.check_winner?(@current_player)
 
       change_turn
     end
@@ -37,7 +37,7 @@ class Game
   end
 
   def print_winner
-    puts "The winner is #{@winner}!"
+    puts "The winner is #{@current_player.name}!"
   end
 
   def change_turn
@@ -61,6 +61,8 @@ class Game
 
   def make_move
     move = prompt "Make your move #{@current_player.name}: "
+
+    make_move unless (1..9).include?(move.to_i)
 
     if @board.open? move
 
