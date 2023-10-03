@@ -14,8 +14,8 @@ class Player
     set_marker
   end
 
-  def prompt(*)
-    print(*)
+  def prompt(*args)
+    print(*args)
     gets.chomp
   end
 
@@ -27,7 +27,7 @@ class Player
 
   def set_marker
     if @@other_player == ''
-      @marker = prompt 'Pick your marker (x or o) ' until %w[x o].include?(@marker)
+      @marker = prompt 'Pick your marker (x or o) ' until ['x', 'o'].include?(@marker)
       @@other_player = @marker
     else
       @marker = @@other_player == 'x' ? 'o' : 'x'

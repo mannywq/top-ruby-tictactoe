@@ -1,18 +1,19 @@
-require_relative 'tictactoe'
-require 'debug'
+require_relative './tictactoe'
 
 class Game
-  def initialize(p1, p2)
+  attr_accessor :current_player, :players
+
+  def initialize(p1, p2, board = TicTacToe.new)
     @game_over = false
     @turn = 0
     @players = [p1, p2]
     @current_player = p1
     @winner = nil
-    @board = TicTacToe.new
+    @board = board
   end
 
-  def prompt(*)
-    print(*)
+  def prompt(*args)
+    print(*args)
     gets.chomp
   end
 

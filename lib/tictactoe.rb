@@ -24,6 +24,10 @@ class TicTacToe
     @@grid
   end
 
+  def self.grid=(val)
+    @@grid = val
+  end
+
   WINNING_COMBO =
     # horizontal
     [
@@ -64,10 +68,11 @@ class TicTacToe
 
       el = row.map { |index| @@grid[index] }
 
-      if el.all? { |el| el == player.marker }
-        # puts "#{player.name} wins!"
-        return true
-      end
+      next unless el.all? { |el| el == player.marker }
+
+      @winner = player
+      # puts "#{player.name} wins!"
+      return true
     end
     # puts 'No winner found'
     false
