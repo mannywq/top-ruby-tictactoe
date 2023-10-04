@@ -66,11 +66,24 @@ describe Game do
       allow(board).to receive(:open?).and_return(true)
 
       allow(board).to receive(:place_marker)
+      allow(board).to receive(:grid).and_return 'x'
     end
     it 'Calls place marker if the slot is open' do
       game.make_move
 
       expect(board).to have_received(:place_marker)
+    end
+    context 'Dealing with errors and invalid input' do
+      it 'Prints an error message if the slot is taken' do
+        # allow(game).to receive(:puts)
+        allow(board).to receive(:open?).and_return(false, true)
+        output = StringIO.new
+        $stdout = output
+        game.make_move
+
+        expect(output.string).to include('1 is taken. Current value is x')
+        $stdout = STDOUT
+      end
     end
   end
 end

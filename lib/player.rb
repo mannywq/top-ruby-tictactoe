@@ -9,9 +9,14 @@ class Player
     @name = name
     @type = type
     @picks = []
+  end
 
-    setup_name
-    set_marker
+  def self.other_player
+    @@other_player
+  end
+
+  def self.other_player=(val)
+    @@other_player = val
   end
 
   def prompt(*args)
